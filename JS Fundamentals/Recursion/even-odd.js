@@ -1,3 +1,6 @@
+// Write a JavaScript program to check whether a number in an array is even or not.
+// Return an array with boolean elements true for even and false for odd.
+
 let counter = 0;
 const isEven = (arr) => {
     counter += 1;
