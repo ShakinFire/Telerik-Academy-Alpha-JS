@@ -1,6 +1,6 @@
 const matrix = [
     ['X', 'X', 'X', '', 'X'],
-    ['X', '', 'X', 'X', ''],
+    ['X', '', 'X', '', ''],
     ['', '', 'X', '', 'X'],
     ['X', '', 'S', '', 'X'],
     ['X', '', 'X', 'X', 'X'],
@@ -36,7 +36,6 @@ const maze = (arr, startRow, startCol) => {
         escapeMaze(matrixSource, currentRow, currentCol, holdResult, path, dir);
         // Going backwards
         const holdDir = dir;
-        let isStart = false;
         while (true) {
             const nextRow = currentRow + rDir[dir];
             const nextCol = currentCol + cDir[dir];
@@ -52,22 +51,14 @@ const maze = (arr, startRow, startCol) => {
                 }
             } else {
                 matrix[currentRow][currentCol] = 'X';
-                currentRow += rDir[dir];
-                currentCol += cDir[dir];
-                if (currentRow === startRow && currentCol === startCol) {
-                    holdResult = [];
-                } else {
-                    holdResult.push(currentRow + ', ' + currentCol);
-                }
                 escapeMaze(matrixSource, currentRow, currentCol, holdResult, path, dir);
             }
         }
     };
     const rDir = [-1, 0, +1, 0];
     const cDir = [0, +1, 0, -1];
-    let direction = 0;
     const result = [];
-    escapeMaze(arr, startRow, startCol, [], result, direction);
+    escapeMaze(arr, startRow, startCol, [], result, 0);
     return result;
 };
 
