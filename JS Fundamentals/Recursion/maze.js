@@ -6,6 +6,9 @@ const matrix = [
     ['X', '', 'X', 'X', 'X'],
 ];
 
+const rDir = [-1, 0, +1, 0];
+const cDir = [0, +1, 0, -1];
+
 const maze = (arr, startRow, startCol) => {
     const escapeMaze = (matrixSource, currentRow, currentCol, holdResult, path, dir) => {
         // Going forward
@@ -55,21 +58,13 @@ const maze = (arr, startRow, startCol) => {
             }
         }
     };
-    const rDir = [-1, 0, +1, 0];
-    const cDir = [0, +1, 0, -1];
+
     const result = [];
-    let dir = 0;
-    escapeMaze(arr, startRow, startCol, [], result, 0);
-    const holdDir = dir;
-    while (true) {
-        if (arr[startRow + rDir[dir]][startCol + cDir[dir]] === '') {
-            escapeMaze(arr, startRow, startCol, [], result, dir);
+    for (let i = 0; i < 4; i += 1) {  // Checking all directions from the start
+        if (arr[startRow + rDir[i]][startCol + cDir[i]] === '') {
+            escapeMaze(arr, startRow, startCol, [], result, i);
         } else {
-            dir += 1;
-            dir %= 4;
-            if (dir === holdDir) {
-                break;
-            }
+            continue;
         }
     }
     return result;
