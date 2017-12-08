@@ -58,7 +58,20 @@ const maze = (arr, startRow, startCol) => {
     const rDir = [-1, 0, +1, 0];
     const cDir = [0, +1, 0, -1];
     const result = [];
+    let dir = 0;
     escapeMaze(arr, startRow, startCol, [], result, 0);
+    const holdDir = dir;
+    while (true) {
+        if (arr[startRow + rDir[dir]][startCol + cDir[dir]] === '') {
+            escapeMaze(arr, startRow, startCol, [], result, dir);
+        } else {
+            dir += 1;
+            dir %= 4;
+            if (dir === holdDir) {
+                break;
+            }
+        }
+    }
     return result;
 };
 
