@@ -10,70 +10,94 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    '6',
-    '1 4 2 6 3 4'
+    '5',
+    '1 1 1 1 1'
 ]
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 /* eslint-enable */
 // -------------------------------------------------------------------------
-
 const size = +gets();
 const arr = gets().split(' ').map(Number);
-let maxJumps = 0;
+const jumps = Array.from({ length: size }).fill(0);
 
 class Node {
-    constructor(val) {
+    constructor(val, index) {
         this.value = val;
         this.next = null;
-        this.prev = null;
-        this.result = 0;
+        this.index = index || null;
     }
 }
 
-class LinkedList {
+class Stack {
     constructor() {
         this.head = null;
         this.tail = null;
         this.length = size;
     }
 
-    append(...el) {
-        el.forEach((value) => {
-            const newNode = new Node(value);
-            if (this.head === null) {
-                this.head = newNode;
-                this.tail = newNode;
-            } else {
-                newNode.prev = this.tail;
-                this.tail.next = newNode;
-                this.tail = newNode;
+    push(el, index) {
+        const newNode = new Node(el, index);
+        if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+    }
 
-                let current = this.tail;
-                const holder = current.value;
-                while (current.prev && current.prev.value < holder) {
-                    current.prev.result += 1;
-                    current = current.prev;
-                    if (current.result > maxJumps) {
-                        maxJumps = current.result;
-                    }
-                }
-                this.tail = newNode;
-            }
-        });
+    pop() {
+        const valueToReturn = this.head.value;
+        this.head = this.head.next;
+        return valueToReturn;
+    }
+
+    peak() {
+        if (this.head === null) {
+            return false;
+        }
+        return this.head.value;
+    }
+
+    peakIndex() {
+        return this.head.index;
     }
 }
 
-const list = new LinkedList();
-list.append(...arr);
+const holdValues = new Stack();
+let maxJumps = 0;
 
-let line = '';
-for (let i = 0; i < size; i += 1) {
-    line += list.head.result + ' ';
-    list.head = list.head.next;
+for (let i = size - 1; i > -1; i -= 1) {
+    if (!holdValues.peak()) {
+        jumps[i] = 0;
+        holdValues.push(arr[i], i);
+    } else {
+        if (arr[i] < holdValues.peak()) {
+            jumps[i] = 1 + jumps[holdValues.peakIndex()];
+            holdValues.push(arr[i], i);
+        } else {
+            while (true) {
+                if (!holdValues.peak()) {
+                    jumps[i] = 0;
+                    holdValues.push(arr[i], i);
+                    break;
+                } else if (arr[i] >= holdValues.peak()) {
+                    holdValues.pop();
+                } else {
+                    jumps[i] = 1 + jumps[holdValues.peakIndex()];
+                    holdValues.push(arr[i], i);
+                    break;
+                }
+            }
+        }
+    }
+
+    if (jumps[i] > maxJumps) {
+        maxJumps = jumps[i];
+    }
 }
 
-line = line.trim();
 console.log(maxJumps);
-console.log(line);
+console.log(jumps.join(' '));
