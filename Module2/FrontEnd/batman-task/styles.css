@@ -1,0 +1,162 @@
+html, body, li, ul, div, ol, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Verdana;
+    background: black;
+    color: salmon;
+}
+
+/* Header */
+header #navBar {
+    border-bottom: 1px solid salmon;
+    padding-bottom: 10px;
+}
+
+header #navBar ul {
+    text-align: center;
+}
+
+header #navBar li {
+    display: inline-block;
+    margin: 10px;
+}
+
+header a {
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+}
+
+header #navBar a:hover {
+    color: salmon;
+}
+
+header .current {
+    color: salmon;
+}
+
+
+/* Main Content */
+#bodySection {
+    display: flex;
+
+}
+#picture-section h1 {
+    font-size: 35px;
+    padding: 25px 0;
+}
+
+#picture-section img {
+    width: 200px;
+}
+
+#picture-section p {
+    color: white;
+    margin-top: 10px;
+}
+
+#info-section {
+    margin-top: 80px;
+    width: 40%;
+}
+
+#info-section h2 {
+    color: pink;
+    border-bottom: 1px solid pink;
+    margin-bottom: 20px;
+}
+
+#info-section #profile-info {
+    margin-bottom: 20px;
+}
+
+#info-section p{
+    color: white;
+}
+
+#info-section ol {
+    padding-left: 40px;
+}
+
+#info-section ol li {
+    color: white;
+    list-style: upper-alpha;
+}
+
+/* Table */
+#table-friends h1 {
+    font-size: 35px;
+    padding: 25px 0;
+}
+
+#table-friends table {
+    width: 100%;
+    border: 1px solid white;
+}
+
+#table-friends table th {
+    text-align: left;
+    font-size: 30px;
+    padding: 10px 0 10px 10px;
+}
+
+#table-friends table td {
+    color: white;
+    padding: 10px 0 10px 10px;
+}
+
+#table-friends table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+#table-friends table .white-row {
+    background: rgb(97, 97, 97);
+}
+
+/* Contacts */
+#contact-info h1{
+    font-size: 35px;
+    padding: 25px 0;
+}
+
+#contact-info .form-wrapper {
+    display: flex;
+    margin-top: 35px;
+}
+
+#contact-info .name-email-input input{
+    margin-bottom: 15px;
+}
+
+#contact-info .radio-input {
+    margin-top: 40px;
+}
+
+#contact-info .radio-input p {
+    margin-bottom: 15px;
+}
+
+#contact-info button {
+    margin-top: 35px;
+}
+
+#contact-info .message-info {
+    margin-left: 40px;
+}
+
+/* Trailer */
+#trailer h1 {
+    font-size: 35px;
+    padding: 25px 0;
+}
+
+#trailer iframe {
+    border: 1px solid salmon;
+}
+
+#drop-down {
+    position: absolute;
+    left: 200px;
+}
