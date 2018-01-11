@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Contacts</title>
+        <link rel = 'stylesheet' href = 'styles.css'>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <header>
+            <nav id = 'navBar'>
+                <ul>
+                    <li><a href="index.html">Profile</a></li>
+                    <li><a href="friends.html">Friends</a></li>
+                    <li><a class = 'current' href="contacts.html">Constacts</a></li>
+                    <li><a href="trailer.html">Trailer</a></li>
+                    <li><a href="#">Bases</a></li>
+                    <li><a href="#">DrawBatman</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id = 'contact-info'>
+            <h1>Contact Batman</h1>
+            <form>
+                <fieldset>
+                    <legend>Send Batman a message:</legend>
+                    <div class = 'form-wrapper'>
+                        <div class = 'form-info'>
+                            <div class = 'name-email-input'>
+                                <p>First Name:</p>
+                                <input type = 'text'>
+                                <p>Last Name:</p>
+                                <input type = 'text'>
+                                <p>Email:</p>
+                                <input type = 'email'>
+                            </div>
+                            <div class = 'radio-input'>
+                                <p>Are you a friend ?</p>
+                                <form>
+                                    <div><input type="radio" value="Yes, of course"> Yes, of course</div>
+                                    <div><input type="radio" value="Maybe"> Maybe</div>
+                                    <div><input type="radio" value="NO"> NO</div>
+                                    <div><input type="radio" value="We'll see"> We'll see</div>
+                                </form>
+                            </div>
+                            <button>Send</button>
+                        </div>
+                        <div class = 'message-info'>
+                            <p>Message:</p>
+                            <textarea rows="5" cols="30" name="comment">Please drop a line here</textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>
