@@ -1,3 +1,28 @@
+/* eslint-disable */
+const getGets = (arr) => {
+    let index = 0;
+
+    return () => {
+        const toReturn = arr[index];
+        index += 1;
+        return toReturn;
+    };
+};
+// this is the test
+const test = [
+    '3 3',
+    '4',
+    'UR 22',
+    'DL 2',
+    'DR 8',
+    'UL 75'
+]
+
+const gets = this.gets || getGets(test);
+const print = this.print || console.log;
+/* eslint-enable */
+// ------------------------------------------------------------------
+
 const [rows, cols] = gets().split(' ').map(Number);
 const changeDirectionCount = +gets();
 const matrix = Array.from({ length: rows }, () => []);
